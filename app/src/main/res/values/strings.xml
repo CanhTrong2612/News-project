@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">news</string>
+    <string name="email_sent_successful">Enter your username and e-mail we will send you an email to reset your password</string>
+</resources>
