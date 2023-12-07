@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.text.TextUtils
+import android.util.Log
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -151,6 +152,7 @@ class ProfileActivity :BaseActivity() {
         hashMap[Constant.IMAGE]= mImageUri
         binding?.btSubmitProfile?.text = "Submit"
         FirestoresClass().updateUser(this,hashMap)
+        Log.e("dldvniv",hashMap.toString())
     }
 
     fun updateUserSuccess() {

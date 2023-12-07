@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">news</string>
     <string name="email_sent_successful">Enter your username and e-mail we will send you an email to reset your password</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="news_placeholder">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</string>
+    <string name="connection_error">gg</string>
+    <string name="xml_error">cc</string>
+    <string name="profile">Profile</string>
+    <string name="logout">Logout</string>
+    <string name="home">Home</string>
 </resources>

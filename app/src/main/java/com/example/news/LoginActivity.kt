@@ -21,8 +21,11 @@ class LoginActivity : BaseActivity() {
         binding?.tvregisterLogin?.setOnClickListener {
             startActivity(Intent(this,RegisterActivity::class.java))
         }
-        binding?.buttonLogin?.setOnClickListener {
+        binding?.buttonLogin?.setOnClickListener{
             loginUsers()
+        }
+        binding?.tvForgotpassword?.setOnClickListener {
+            startActivity(Intent(this,ForgotPasswordActivity::class.java))
         }
 
     }
@@ -33,7 +36,7 @@ class LoginActivity : BaseActivity() {
                 false
             }
             TextUtils.isEmpty(binding?.editTextPassword?.text.toString())->{
-                showErrorSnackBar("Please enter Last Name.",true)
+                showErrorSnackBar("Please enter password.",true)
                 false
             }
             else->{
@@ -41,16 +44,16 @@ class LoginActivity : BaseActivity() {
             }
         }
     }
-    private fun loginUsers()
+    fun loginUsers()
     {
         val email = binding?.editTextEmail?.text.toString()
         val password = binding?.editTextPassword?.text.toString()
-        if (validateForm()){
+       if (validateForm()){
             showProgressDialog()
             FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
-                        Log.d(ContentValues.TAG, "signInWithEmail:success")
+                        Log.e(ContentValues.TAG, "signInWithEmail:success")
                         FirestoresClass().getUserDetail(this)
 
                     } else {
@@ -68,7 +71,7 @@ class LoginActivity : BaseActivity() {
 //        finish()
 //    }
     fun userLoggedInSuccess(user: User) {
-        hideProgressDialog()
+         hideProgressDialog()
         if (user.profileComplete==0){
             val intent = (Intent(this, ProfileActivity::class.java))
             intent.putExtra(Constant.EXTRA_USER_DETAILS,user)

@@ -5,29 +5,48 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-    <LinearLayout
-        android:layout_marginTop="50dp"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+
+   <LinearLayout
+       android:orientation="vertical"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+      <com.google.android.material.appbar.AppBarLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
+         <androidx.appcompat.widget.Toolbar
+             android:id="@+id/toolbar_main"
+             android:layout_width="match_parent"
+             android:background="@color/teal_700"
+             android:layout_height="?attr/actionBarSize">
+            <TextView
+                android:text="NEWS-APP"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:layout_gravity="center"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+         </androidx.appcompat.widget.Toolbar>
+
+      </com.google.android.material.appbar.AppBarLayout>
+      <com.google.android.material.tabs.TabLayout
+          android:id="@+id/tab_layout"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          app:tabGravity="center"
+          android:background="@color/teal_700"
+          app:tabIndicatorColor="@color/white"
+          app:tabIndicatorFullWidth="false"
+          app:tabTextColor="@color/white"
+          app:tabMaxWidth="0dp"
+          app:tabMode="scrollable"
+          app:tabSelectedTextColor="@color/white" />
+      <androidx.viewpager2.widget.ViewPager2
+          android:id="@+id/viewpager2"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"/>
 
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/search"
-        android:hint="Search"
-        android:background="@drawable/search"
-        android:inputType="text"
-        android:padding="8dp"
-        android:layout_margin="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="50dp">
-
-    </androidx.appcompat.widget.SearchView>
-    <androidx.recyclerview.widget.RecyclerView
-        android:padding="8dp"
-        android:id="@+id/rv_main"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    </LinearLayout>
+   </LinearLayout>
 
 </LinearLayout>

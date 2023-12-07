@@ -3,6 +3,7 @@ package com.example.news
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import com.example.news.databinding.ActivityForgotPasswordBinding
 import com.google.firebase.auth.FirebaseAuth
 
@@ -39,6 +40,7 @@ class ForgotPasswordActivity : BaseActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeAsUpIndicator(R.drawable.baseline_arrow_back)
         supportActionBar?.title= "Forgot password"
+        binding?.toolbarForgotpassword?.setTitleTextColor(ContextCompat.getColor(this, R.color.white))
         binding?.toolbarForgotpassword?.setNavigationOnClickListener { onBackPressed() }
 
     }

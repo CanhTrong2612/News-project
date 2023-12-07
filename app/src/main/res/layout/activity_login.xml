@@ -98,7 +98,7 @@
             android:id="@+id/tv_forgotpassword"
             android:layout_marginEnd="20dp"
             android:layout_gravity="right"
-            android:hint="Quên mật khẩu?"
+            android:hint="Forgot password?"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <Button

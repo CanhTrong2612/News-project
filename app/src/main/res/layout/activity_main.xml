@@ -7,7 +7,7 @@
     android:fitsSystemWindows="true"
     tools:openDrawer="start"
     android:id="@+id/layout_drawer"
-    tools:context=".MainActivity">
+   >
     <include
         layout="@layout/app_bar_main"
         android:layout_width="match_parent"
