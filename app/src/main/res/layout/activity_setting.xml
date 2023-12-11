@@ -65,7 +65,7 @@
         android:layout_height="wrap_content">
         <TextView
             android:layout_marginTop="10dp"
-            android:textSize="18dp"
+            android:textSize="20dp"
             android:textStyle="bold"
             android:id="@+id/tv_name"
             android:layout_width="wrap_content"
@@ -96,7 +96,22 @@
             android:textStyle="bold"
             android:textColor="@color/teal_700"
             android:textSize="18dp" />
+        <androidx.appcompat.widget.AppCompatButton
 
+            android:drawableLeft="@drawable/baseline_history_24"
+            android:id="@+id/btn_read_later"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ll_address"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button2"
+            android:text="read later"
+            android:textStyle="bold"
+            android:textColor="@color/teal_700"
+            android:textSize="18dp" />
+      
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_logout"
             android:layout_width="match_parent"

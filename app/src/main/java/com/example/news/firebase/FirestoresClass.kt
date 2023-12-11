@@ -3,13 +3,14 @@ package com.example.news.firebase
 import android.app.Activity
 import android.net.Uri
 import android.util.Log
-import android.widget.Toast
 import com.example.news.LoginActivity
 import com.example.news.MainActivity
 import com.example.news.ProfileActivity
 import com.example.news.RegisterActivity
+import com.example.news.SaveActivity
 import com.example.news.SettingActivity
 import com.example.news.ViewHistoryActivity
+import com.example.news.WebViewActivity
 import com.example.news.adapter.NewsAdapter
 import com.example.news.model.News
 import com.example.news.model.User
@@ -149,6 +150,40 @@ class FirestoresClass {
     }
     fun deleteViewHistory(activity: ViewHistoryActivity,id:String){
         mFireStore.collection("new")
+            .document(id)
+            .delete()
+            .addOnSuccessListener {
+                activity.getViewHistorySuccess()
+            }
+            .addOnFailureListener { e->
+                Log.e(activity.javaClass.simpleName,"loi",e)
+            }
+    }
+    fun addReadlater(activity: WebViewActivity, news: News){
+        mFireStore.collection("save")
+            .document()
+            .set(news, SetOptions.merge())
+            .addOnSuccessListener {
+
+            }
+    }
+    fun get(activity: SaveActivity){
+        mFireStore.collection("save")
+            .get()
+            .addOnSuccessListener { document->
+                val listNews = ArrayList<News>()
+                Log.e("vvvkdv",document.documents.toString())
+                for ( i in document.documents){
+                    var news = i.toObject(News::class.java)!!
+                    news.id = i.id.trim()
+                    listNews.add(news)
+                }
+
+                activity.load(listNews)
+            }
+    }
+    fun deleteReadLater(activity: SaveActivity,id:String){
+        mFireStore.collection("save")
             .document(id)
             .delete()
             .addOnSuccessListener {

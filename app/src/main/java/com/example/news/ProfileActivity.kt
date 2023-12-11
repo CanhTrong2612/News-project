@@ -56,17 +56,18 @@ class ProfileActivity :BaseActivity() {
         binding?.toolbarProduct?.setNavigationOnClickListener { onBackPressed() }
     }
     fun getImage() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
-            == PackageManager.PERMISSION_GRANTED
-        ) {
-            showImageChoosen()
-        } else {
-            ActivityCompat.requestPermissions(
-                this,
-                arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
-                Constant.READ_STORE_PERMISSION_CODE
-            )
-        }
+//        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
+//            == PackageManager.PERMISSION_GRANTED
+//        ) {
+//            showImageChoosen()
+//        } else {
+//            ActivityCompat.requestPermissions(
+//                this,
+//                arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
+//                Constant.READ_STORE_PERMISSION_CODE
+//            )
+//        }
+        showImageChoosen()
     }
     private fun showImageChoosen() {
         val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
@@ -90,6 +91,7 @@ class ProfileActivity :BaseActivity() {
             ).show()
         }
     }
+    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK &&

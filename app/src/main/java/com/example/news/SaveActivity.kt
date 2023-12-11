@@ -1,24 +1,25 @@
 package com.example.news
 
 import android.app.AlertDialog
+import android.app.Dialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.news.adapter.HistoryAdapter
-import com.example.news.databinding.ActivityViewHistoryBinding
+import com.example.news.adapter.SaveAdapter
+import com.example.news.databinding.ActivitySaveBinding
 import com.example.news.firebase.FirestoresClass
 import com.example.news.model.News
 
-class ViewHistoryActivity : AppCompatActivity() {
-    private var binding:ActivityViewHistoryBinding?= null
+class SaveActivity : AppCompatActivity() {
+    private var binding: ActivitySaveBinding?= null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityViewHistoryBinding.inflate(layoutInflater)
+        binding = ActivitySaveBinding.inflate(layoutInflater)
         setContentView(binding?.root)
         actionBar()
-        getViewHistorySuccess()
-
+       getViewHistorySuccess()
     }
     fun actionBar(){
         setSupportActionBar(binding?.toolbarHistory)
@@ -28,22 +29,24 @@ class ViewHistoryActivity : AppCompatActivity() {
         binding?.toolbarHistory?.setNavigationOnClickListener { onBackPressed() }
     }
     fun load(list: ArrayList<News>){
-        val adapter = HistoryAdapter(this,list,this)
-        binding?.rvHistory?.layoutManager= LinearLayoutManager(this)
-        binding?.rvHistory?.adapter= adapter
+        val adapter = SaveAdapter(this,list,this)
+        binding?.rvSave?.layoutManager= LinearLayoutManager(this)
+        binding?.rvSave?.adapter= adapter
     }
     fun getViewHistorySuccess(){
-        FirestoresClass().getViewHistory(this)
+        FirestoresClass().get(this)
     }
-    fun delete(id:String){
+    fun deleteReadLater(id:String){
         dilaog(id)
+//        FirestoresClass().deleteReadLater(this,id)
+//        Toast.makeText(this, "delete", Toast.LENGTH_SHORT).show()
     }
     fun dilaog(id:String){
         val dialog = AlertDialog.Builder(this)
         dialog.setTitle("Delete")
         dialog.setMessage("Do you want to delete this item?")
         dialog.setPositiveButton("Yes"){dialog,which->
-            FirestoresClass().deleteViewHistory(this,id)
+            FirestoresClass().deleteReadLater(this,id)
 
         }
         dialog.setNegativeButton("No"){dialog,which->
@@ -53,5 +56,4 @@ class ViewHistoryActivity : AppCompatActivity() {
         dialog.show()
 
     }
-
 }

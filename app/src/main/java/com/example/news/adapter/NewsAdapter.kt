@@ -42,6 +42,7 @@ class NewsAdapter(val context: Context, val list: List<News?>):RecyclerView.Adap
             holder.itemView.setOnClickListener {
                 val intent = Intent(context, WebViewActivity::class.java)
                 intent.putExtra("link",model.link)
+                intent.putExtra("news",model)
                 FirestoresClass().viewHistory(this,model)
                 context.startActivity(intent)
             }
